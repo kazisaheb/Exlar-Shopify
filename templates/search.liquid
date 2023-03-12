@@ -1,0 +1,38 @@
+{% render 'search' %}
+
+<div id="searchresults">
+  {% if search.performed %}
+    {% if search.results == empty %}
+      <p>
+        Your search for
+        <strong>"{{ search.terms | escape }}"</strong>
+        did not yield any results!
+      </p>
+    {% else %}
+      <p>
+        Your search results for
+        <strong>"{{ search.terms | escape }}"
+        </strong>:
+      </p>
+
+      {% paginate search.results by 3 %}
+        <ol>
+          {% for item in search.results %}
+            <li>
+              <h3>{{ item.title | link_to: item.url }}</h3>
+              {% if item.featured_image %}
+                <div class="result-image">
+                  <a href="{{item.url}}" title="">{{ item.featured_image | product_img_url: 'small' | img_tag }}</a>
+                </div>
+              {% endif %}
+              <span>{{ item.content | strip_html | truncatewords: 40 | highlight: search.terms }}</span>
+              <div style="clear:left"></div>
+            </li>
+          {% endfor %}
+        </ol>
+
+        <p class="paginate">{{ paginate | default_pagination }}</p>
+      {% endpaginate %}
+    {% endif %}
+  {% endif %}
+</div>

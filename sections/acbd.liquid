@@ -1,0 +1,63 @@
+<style>
+  .acb {
+    background: {{ section.settings.background }}
+    ;
+    font-size: {{ section.settings.font_size }}
+    px;
+    color: {{ section.settings.text_color }}
+    ;
+    width: -webkit-fill-available;
+  }
+  .acb p {
+    margin: 10px;
+    padding: 5px;
+  }
+</style>
+
+<div class="acb">
+  {% if section.settings.scroll %}
+    <marquee>{{ section.settings.acb }}</marquee>
+  {% else %}
+    {{ section.settings.acb }}
+  {% endif %}
+</div>
+
+{% schema %}
+  {
+    "name": "AC Bar",
+    "settings": [
+      {
+        "type": "richtext",
+        "id": "acb",
+        "label": "Text"
+      },
+      {
+        "type": "checkbox",
+        "id": "scroll",
+        "default": false,
+        "label": "Scroll"
+      },
+      {
+        "type": "range",
+        "id": "font_size",
+        "min": 10,
+        "max": 30,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size",
+        "default": 16
+      },
+      {
+        "type": "color_background",
+        "id": "background",
+        "label": "Background",
+        "default": "linear-gradient(#ffffff, #000000)"
+      }, {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color",
+        "default": "#000"
+      }
+    ]
+  }
+{% endschema %}

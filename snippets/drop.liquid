@@ -1,0 +1,25 @@
+<style>
+  .nav li {
+    margin: 10px 0;
+    display: flex;
+  }
+
+  .nav li a {
+    text-decoration: none;
+    background: burlywood;
+    padding: 2px 43px;
+    width: 150px;
+    margin-left: -40px;
+  }
+
+  .nav li a:hover {
+    background: black;
+    color: white;
+  }
+</style>
+
+<ul>
+  {% for link in linklists['main-menu'].links -%}
+    <li>{{ link.title | link_to: link.url }}</li>
+  {%- endfor %}
+</ul>

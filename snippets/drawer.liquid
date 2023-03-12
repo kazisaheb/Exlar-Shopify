@@ -1,0 +1,51 @@
+<style>
+  .drawer {
+    z-index: 45;
+    background: aliceblue;
+    width: 300px;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow: 0 0 10px 0 black;
+    overflow: auto;
+    max-height: 100vh;
+  }
+  .drawer img {
+    width: 100px !important;
+    height: 65px !important;
+  }
+
+  .drawer-bg {
+    background: #00000057;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 6;
+  }
+  .drawer-bg {
+    background: #00000057;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 6;
+    right: 340px;
+  }
+  .ctop {
+    display: flex;
+    justify-content: space-between;
+  }
+</style>
+
+<div class="drawer">
+  <div class="ctop">
+    <a href="/cart">Go to Cart Page</a>
+    <button @click="open = false">x</button>
+  </div>
+  {% render 'cartitems' %}
+  <div class="drawer-bg" @click="open = false"></div>
+</div>
+<div class="loadersmall"></div>

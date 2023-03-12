@@ -1,0 +1,45 @@
+<style>
+  .footer {
+    background: black;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 50px;
+    position: relative;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+  }
+  span.f_logo {
+    background: red;
+    min-width: 400px;
+  }
+  .footer a {
+    color: white;
+    text-decoration: none;
+  }
+  .footer a:hover {
+    text-decoration: underline;
+  }
+  .footer ul.foor {
+    display: flex;
+  }
+  .footer li {
+    margin: 0 10px;
+    list-style: none;
+  }
+</style>
+
+<div class="footer">
+  <span class="f_logo">
+    <a href="/">
+      <h1>{{ shop.name }}</h1>
+    </a>
+  </span>
+  <ul class="foor">
+    {% for link in linklists.footer.links -%}
+      <li>{{ link.title | link_to: link.url }}</li>
+    {%- endfor %}
+  </ul>
+</div>

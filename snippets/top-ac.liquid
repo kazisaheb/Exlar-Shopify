@@ -1,0 +1,12 @@
+<style>
+  #ac_close:checked ~ .announcement-bar {
+    display: none;
+  }
+</style>
+
+<input type="checkbox" id="ac_close" style="display:none">
+<label for="ac_close" style="color: white;position: absolute;right: 30px; top: 6px; z-index: 2; cursor: pointer;">
+  {%- render 'icon', icon: 'close' -%}
+</label>
+
+{% comment %} Section contents will go here... {% endcomment %}

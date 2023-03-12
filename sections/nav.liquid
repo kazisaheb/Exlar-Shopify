@@ -1,0 +1,118 @@
+<style>
+  .logo img {
+    width: {{ section.settings.logo_size }}
+    px;
+  }
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    margin: -8px;
+  }
+
+  .menus h2,
+  .cart-icon {
+    cursor: pointer;
+  }
+
+  span.ds {
+    display: flex;
+    flex-direction: column-reverse;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: #fff;
+    padding: 10px;
+    box-shadow: 0 0 10px 0 black;
+  }
+  .search_bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #0000003d;
+    padding: 50px 0;
+    text-align: center;
+  }
+  .show_search {
+    position: absolute;
+    margin: 33px -33px;
+  }
+</style>
+
+<div class="nav">
+  <div
+    class="menus"
+    x-data="{ open: false }"
+    @click.outside="open = false">
+    <h2 @click="open = ! open">☰</h2>
+    <span
+      x-cloak
+      class="ds"
+      x-show="open"
+      x-transition.duration.500ms>
+      {% render 'drop' %}
+      {% comment %} {% render 'search' %} {% endcomment %}
+    </span>
+  </div>
+
+  <a href="/" class="logo">
+    {% if section.settings.logo %}
+      <img src="{{ section.settings.logo | img_url: width:100 }}" alt="{{ shop.name }}">
+    {% else %}
+      <h1>{{ shop.name }}</h1>
+    {% endif %}
+  </a>
+  <span>
+    <div x-data="{ open: false }">
+      <span
+        @click.outside="open = false"
+        class="search_bar"
+        x-show="open"
+        x-transition.duration.500ms
+        x-cloak>
+        {% render 'search' %}
+      </span>
+      <button class="show_search" @click="open = true">O
+      </button>
+    </div>
+
+    <div x-data="{ open: false }">
+      <h2
+        class="cart-icon"
+        @click="open = true"
+        @drawer.window="open = true">👜<button class="item_count" data-ajax-cart-bind-state="cart.item_count">{{ cart.item_count }}</button>
+      </h2>
+      <span
+        x-show="open"
+        x-transition.duration.500ms
+        x-cloak>
+        {% render 'drawer' %}
+      </span>
+    </div>
+  </span>
+
+</div>
+
+{% schema %}
+  {
+    "name": "Logo",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo"
+      }, {
+        "type": "range",
+        "id": "logo_size",
+        "min": 50,
+        "max": 200,
+        "step": 5,
+        "unit": "px",
+        "label": "Logo size",
+        "default": 70
+      }
+    ]
+  }
+{% endschema %}

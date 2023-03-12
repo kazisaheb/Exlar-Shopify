@@ -1,0 +1,51 @@
+<style>
+  .p_tags {
+    box-shadow: 0 3px 10px 0 #dedede;
+    border-radius: 20px;
+  }
+  .servs {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+  }
+  .servs span {
+    display: flex;
+    font-size: 18px;
+  }
+  .servs span img {
+    width: 30px;
+    margin-right: 10px;
+  }
+  .pays {
+    background-color: #F8F8F8;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px;
+    border-radius: 0 0 20px 20px;
+    flex-wrap: wrap;
+  }
+</style>
+<div class="p_tags">
+  <div class="servs">
+    <span>
+      <img src="https://d5e8s8v77hgzv.cloudfront.net/popup_assets/graphic-icons/svg/icons8-earth-globe-100-2.svg" alt="">
+      <p>Worldwide Shipping</p>
+    </span>
+    <span>
+      <img src="https://d5e8s8v77hgzv.cloudfront.net/popup_assets/graphic-icons/svg/icons8-cotton-100.svg" alt="">
+      <p>Quality Materials</p>
+    </span>
+    <span>
+      <img src="https://d5e8s8v77hgzv.cloudfront.net/popup_assets/graphic-icons/svg/icons8-hand-with-a-heart-100-4.svg" alt="">
+      <p>Selected with love</p>
+    </span>
+  </div>
+
+  <div class="pays">
+    {% for type in shop.enabled_payment_types %}
+      {{ type | payment_type_svg_tag: class: 'payment-list__item' }}
+    {% endfor %}
+  </div>
+</div>

@@ -1,0 +1,35 @@
+{
+  "current": {
+    "checkout_logo_image": "shopify:\/\/shop_images\/Exlar_Logo_small.webp",
+    "sections": {
+      "acbd": {
+        "type": "acbd",
+        "settings": {
+          "acb": "<p><em><strong>Free Shipping Over $50 Order!<\/strong><\/em><\/p>",
+          "scroll": true,
+          "font_size": 16,
+          "background": "linear-gradient(228deg, rgba(226, 32, 58, 1), rgba(42, 226, 127, 1) 36%, rgba(103, 51, 226, 1) 66.906%, rgba(134, 0, 0, 1) 97%)",
+          "text_color": "#ffffff"
+        }
+      },
+      "banner": {
+        "type": "banner",
+        "settings": {
+          "banner": "shopify:\/\/shop_images\/ripe-red-strawberries-in-a-white-bowl.jpg"
+        }
+      },
+      "nav": {
+        "type": "nav",
+        "settings": {
+          "logo": "shopify:\/\/shop_images\/Exlar_Logo.webp",
+          "logo_size": 65
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {}
+      }
+    },
+    "content_for_index": []
+  }
+}

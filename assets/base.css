@@ -1,0 +1,105 @@
+button,
+input[type="submit"] {
+  cursor: pointer;
+}
+
+h1 {
+  text-align: center;
+}
+
+.paginate {
+  text-align: center;
+  margin: 10px;
+}
+
+.paginate span {
+  margin: 5px;
+  border: 1px solid;
+  border-radius: 3px;
+  padding: 0px 7px;
+  background: #f5dada;
+}
+
+select#sort-by {
+  background: rgb(228, 228, 228);
+  padding: 5px;
+  width: 50%;
+  font-size: 16px;
+  display: block;
+  margin: 0 auto;
+}
+
+button.stt {
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
+  opacity: .5;
+}
+
+button.stt:hover {
+  opacity: 1;
+}
+
+s {
+  color: red;
+}
+
+[x-cloak] {
+  display: none !important;
+}
+
+.loadersmall {
+  border: 5px solid #fff;
+  -webkit-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
+  border-top: 5px solid #555;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  top: 50%;
+  right: 140px;
+  z-index: 99;
+  display: none;
+}
+
+.js-ajax-cart-request-in-progress .loadersmall {
+  display: block;
+}
+
+.js-ajax-cart-request-in-progress .drawer-bg {
+  z-index: 98;
+  right: 0;
+  pointer-events: none !important;
+}
+
+
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.item_count {
+  background: black;
+  border-radius: 30px;
+  padding: 5px;
+  color: #fff;
+  margin: 0 -10px;
+  position: absolute;
+  border: none;
+  min-width: 25px;
+}
+
+/* div#shopify-section-nav {
+  position: sticky;
+  top: 0px;
+  background: white;
+  z-index: 500;
+  box-shadow: 0 0 1pc;
+} */

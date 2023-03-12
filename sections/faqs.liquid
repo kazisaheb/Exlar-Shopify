@@ -1,0 +1,51 @@
+{% style %}
+  summary {
+    display: block;
+    margin: -20px 0;
+  }
+  details {
+    border: 1px solid;
+    margin: 5px 0;
+    background: antiquewhite;
+    padding: 0 10px;
+  }
+{% endstyle %}
+
+<h1>FAQs</h1>
+
+{% for block in section.blocks %}
+  <div>
+    <details>
+      <summary>
+        <h2>{{ block.settings.question }}</h2>
+      </summary>
+
+      {{ block.settings.answer }}
+    </details>
+  </div>
+{% endfor %}
+
+{% schema %}
+{
+  "name": "FAQs",
+  "max_blocks": 5,
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question:"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer:"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

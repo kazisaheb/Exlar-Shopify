@@ -1,0 +1,87 @@
+{% style %}
+  .slider {
+    scroll-snap-type: x mandatory;
+    display: flex;
+    overflow-x: scroll;
+    margin: -8px;
+  }
+  .slide {
+    flex-shrink: 0;
+    scroll-snap-type: x mandatory;
+    scroll-snap-align: start;
+    width: 100vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+  }
+
+  .slide button {
+    font-size: 20px;
+    background: white;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+  }
+  .slide button:hover {
+    background: black;
+    color: white;
+  }
+  .slide_info {
+    background: #00000066;
+    color: white;
+    padding: 5%;
+  }
+  .slide_info h2 {
+    border: 1px solid;
+    display: inline-block;
+    padding: 0 2%;
+  }
+{% endstyle %}
+
+
+<div class="slider">
+  {% for block in section.blocks %}
+    <div
+      class="slide"
+      style="background-image:url('{{ block.settings.bg | img_url: 'large' }}')"
+      ​​​​​​>
+      <div class="slide_info">
+        <h2>{{ block.settings.banner_title }}</h2>
+        <p>{{ block.settings.banner_text }}</p>
+        <button>{{ block.settings.button_text }}</button>
+      </div>
+    </div>
+
+  {% endfor %}
+</div>
+
+{% schema %}
+  {
+    "name": "Banner",
+    "blocks": [
+      {
+        "type": "bg",
+        "name": "Banner Item",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "bg",
+            "label": "Upload"
+          }, {
+            "type": "text",
+            "id": "banner_title",
+            "label": "Banner Title"
+          }, {
+            "type": "richtext",
+            "id": "banner_text",
+            "label": "Banner Text"
+          }, {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button Text"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

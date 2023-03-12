@@ -1,0 +1,59 @@
+{{ content_for_index }}
+
+{% section 'banner' %}
+
+{{ 'products.css' | asset_url | stylesheet_tag }}
+
+{% section 'social' %}
+
+{% for collection in collections %}
+  <a href="{{ collection.url }}">
+    <h1>{{ collection.title }}</h1>
+  </a>
+  <div class="collection">
+    {% for product in collection.products %}
+      <div class="product">
+        <a href="{{ product.url }}">
+          {% if product.media[1] %}
+            <img
+              class="m0"
+              src="{{ product.featured_image | image_url: width: 200 }}"
+              alt="{{ product.title }}"
+              loading="lazy">
+
+            <img
+              class="m1"
+              src="{{ product.media[1] | image_url: width: 200 }}"
+              alt="{{ product.title }}"
+              loading="lazy">
+          {% else %}
+            <img
+              src="{{ product.featured_image | image_url: width: 200 }}"
+              alt="{{ product.title }}"
+              loading="lazy">
+          {% endif %}
+          <h3>{{ product.title }}</h3>
+        </a>
+        <span class="pc" x-data>
+          <p>{{ product.price | money }}</p>
+          <s>
+            <p>{{ product.compare_at_price | money }}</p>
+          </s>
+
+          <form method="post" action="/cart/add">
+            <input
+              name="id"
+              value="{{ product.variants.first.id }}"
+              type="hidden">
+            <input
+              name="add"
+              value="Quick Add"
+              type="submit"
+              @click="$dispatch('drawer')">
+          </form>
+        </span>
+      </div>
+    {% endfor %}
+  </div>
+  <hr>
+{% endfor %}

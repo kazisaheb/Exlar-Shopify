@@ -1,0 +1,83 @@
+.collection {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+.product:hover {
+  transform: scale(1.3);
+  z-index: 2;
+}
+
+.product {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 gray;
+  background: #fff;
+  transition: 0.5s;
+}
+
+.product a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product img {
+  height: 150px;
+  display: flex;
+  width: 200px;
+}
+
+.m0 {
+  position: absolute;
+}
+
+.m1 {
+  position: relative;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.m1:hover {
+  opacity: 1;
+}
+
+
+.pc p {
+  margin-bottom: 50px;
+  display: contents;
+}
+
+.pc {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+input,
+button {
+  cursor: pointer;
+}
+
+
+/* ===== Button Animation ===== */
+button.product-form__add-button.button.button--primary {
+  color: #fff;
+  background: linear-gradient(90deg, #008A00 50%, #F58425 0) var(--_p, 100%)/200% no-repeat;
+}
+
+/* =========== 45 deg ========== */
+button.product-form__add-button.button.button--primary {
+  color: #fff;
+  background: linear-gradient(45deg, #008A00 45%, #F58425 0) var(--_p, 100%)/250% no-repeat;
+}
+
+/* =========== On hover ========== */
+button.product-form__add-button.button.button--primary:hover {
+  --_p: 0%;
+}

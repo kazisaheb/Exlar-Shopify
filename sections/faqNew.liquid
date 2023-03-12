@@ -1,0 +1,139 @@
+{% style %}
+  input[type='checkbox'] {
+    display: none;
+  }
+
+  .wrap-collabsible {
+    margin: 1.2rem 0;
+  }
+
+  .lbl-toggle {
+    display: block;
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    padding: 1rem;
+    color: #ddd;
+    background: {{ section.settings.background }}
+    ;
+    cursor: pointer;
+    border-radius: 7px;
+    transition: all 0.25s ease-out;
+  }
+
+  .lbl-toggle:hover {
+    color: #fff;
+  }
+
+  .lbl-toggle::before {
+    content: ' ';
+    display: inline-block;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid currentColor;
+    vertical-align: middle;
+    margin-right: 0.7rem;
+    transform: translateY(-2px);
+    transition: transform 0.2s ease-out;
+  }
+
+  .toggle:checked + .lbl-toggle::before {
+    transform: rotate(90deg) translateX(-3px);
+  }
+
+  .collapsible-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease-in-out;
+  }
+
+  .toggle:checked + .lbl-toggle + .collapsible-content {
+    max-height: 350px;
+  }
+
+  .toggle:checked + .lbl-toggle {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .collapsible-content .content-inner {
+    background: {{ section.settings.background }}
+    20;
+    border-bottom: 1px solid rgba(0, 105, 255, 0.45);
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    padding: 0.5rem 1rem;
+  }
+
+  .collapsible-content p {
+    margin-bottom: 0;
+  }
+
+
+  .card__collapsible-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    width: 100%;
+    cursor: pointer;
+  }
+  .card__collapsible-button .plus-button {
+    margin-left: 10px;
+    color: var(--heading-color);
+  }
+{% endstyle %}
+
+
+
+{% for block in section.blocks %}
+  <div class="wrap-collabsible">
+    <input
+      id="__{{forloop.index}}"
+      class="toggle"
+      type="checkbox">
+    <label
+      class="lbl-toggle"
+      id="ok"
+      for="__{{forloop.index}}">
+      {{- block.settings.qst -}}
+    </label>
+    <div class="collapsible-content">
+      <div class="content-inner">
+        <p>{{ block.settings.ans }}</p>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+
+{% schema %}
+  {
+    "name": "FAQ New",
+    "settings": [
+      {
+        "type": "color",
+        "id": "background",
+        "label": "Background:"
+      }
+    ],
+    "max_blocks": 5,
+    "blocks": [
+      {
+        "type": "text",
+        "name": "Question",
+        "settings": [
+          {
+            "type": "text",
+            "id": "qst",
+            "label": "Question:"
+          }, {
+            "type": "richtext",
+            "id": "ans",
+            "label": "Answer:"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

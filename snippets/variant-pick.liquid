@@ -1,0 +1,24 @@
+{% for variant in product.variants %}
+  <form method="post" action="/cart/add">
+    <div class="variants">
+      <img src=" {{ variant.image | img_url: 'small' }}">
+      {{ variant.title }}
+      {{ variant.price | money }}
+      <input
+        name="id"
+        value="{{ variant.id }}"
+        type="hidden">
+      <input
+        class="pqty"
+        name="quantity"
+        type="number"
+        min="1"
+        value="1">
+      <input
+        name="add"
+        value="Add Cart"
+        type="submit"
+        @click="$dispatch('drawer')">
+    </div>
+  </form>
+{% endfor %}

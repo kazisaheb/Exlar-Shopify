@@ -1,0 +1,54 @@
+<style>
+  .single {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin: 50px 0;
+    align-items: flex-start;
+  }
+  .single img {
+    transition: 0.5s;
+    max-width: 100%;
+  }
+  .single img:hover {
+    transform: scale(1.5);
+  }
+  .info {
+    max-width: 500px;
+  }
+  .info h2 {
+    margin-top: -10px;
+  }
+  input.pqty {
+    border: 1px solid;
+  }
+  .faqNews {
+    max-width: 500px;
+  }
+  .variants {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin: 10px 0;
+    box-shadow: inset 0 0 10px gray;
+  }
+</style>
+
+<div class="single">
+  <img src="{{ product.featured_image | image_url: width: 500 }}" alt="{{ product.title }}">
+  <div class="info" x-data>
+    <h2>{{ product.title }}</h2>
+    {% render 'trusts' %}
+    <span class="v_pick">
+      <input type="checkbox" id="v_id">
+      <label for="v_id">
+        <b>Variants:</b>
+      </label>
+      {% render 'variant-pick' %}
+    </span>
+    <p>{{ product.description }}</p>
+    {% section 'faqNew' %}
+  </div>
+</div>
+{% render 'featured-icons' %}

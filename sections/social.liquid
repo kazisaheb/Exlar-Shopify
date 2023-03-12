@@ -1,0 +1,40 @@
+<style>
+  .k_social {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} .k_social img {
+  width: 50px;
+} .k_social h2 {
+  margin: 0;
+  font-size: revert;
+}
+</style>
+<div class="k_social">
+  <img src="{{section.settings.img}}" alt="">
+  <h2>{{section.settings.title}}</h2>
+  <div class="s_feed"></div>
+</div>
+{% schema %}
+ {
+  "name": "Instagram Feed",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "img",
+      "label": "Social Icon"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Feed Title"
+    }
+   ],
+  "presets": [
+  {
+    "category": "Social",
+    "name": "Scroll Feed"
+  }
+]
+  }
+{% endschema %}
